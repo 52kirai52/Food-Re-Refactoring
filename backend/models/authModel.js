@@ -6,6 +6,13 @@ const isUsernameExists = async (username) => {
   return !!rows[0];
 };
 
+const createUser = async (username, hashedPassword) => {
+    const query = "INSERT INTO users (username, password_hash) VALUES (?, ?)";
+    const [result] = await db.execute(query, [username, hashedPassword]);
+    return result.insertId;
+}
+
 module.exports = {
   isUsernameExists,
+  createUser,
 };
