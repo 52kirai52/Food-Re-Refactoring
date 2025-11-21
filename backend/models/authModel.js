@@ -1,18 +1,18 @@
 const db = require("../config/db");
 
-const isUsernameExists = async (username) => {
+const isUsernameExistsx = async (conn, username) => {
   const query = "SELECT 1 FROM users WHERE username = ? LIMIT 1";
-  const [rows] = await db.execute(query, [username]);
+  const [rows] = await conn.execute(query, [username]);
   return !!rows[0];
 };
 
-const createUser = async (username, hashedPassword) => {
+const createUserx = async (conn, username, hashedPassword) => {
     const query = "INSERT INTO users (username, password_hash) VALUES (?, ?)";
-    const [result] = await db.execute(query, [username, hashedPassword]);
+    const [result] = await conn.execute(query, [username, hashedPassword]);
     return result.insertId;
 }
 
 module.exports = {
-  isUsernameExists,
-  createUser,
+  isUsernameExistsx,
+  createUserx,
 };
