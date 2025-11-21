@@ -1,4 +1,4 @@
-// require('dotenv').config();
+require('dotenv').config();
 
 const express = require('express');
 // const cors = require('cors');
@@ -27,6 +27,7 @@ app.use(express.json());
 //   cookie: { maxAge: 3600000 }
 // }));
 
+app.use('/api/auth', authRoutes);
 // app.use('/api/users', userRouter);
 // app.use("/api/random", randomRoutes);
 // app.use("/api/random/login", randomRoutes);
